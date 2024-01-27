@@ -1,0 +1,79 @@
+#!/bin/sh
+# hairlinehd obgk
+# osu! video and background killer
+
+# colors
+red='\033[0;31m'
+green='\033[0;32m'
+blue='\033[0;34m'
+purple='\033[0;35m'
+clear='\033[0m'
+
+# thing that deletes stuff
+bgk() {
+  find $dir -name "*.$1" -type f -exec /bin/rm -vf {} \;
+}
+
+config=$XDG_CONFIG_HOME/obgk/config
+
+if [ -s $config ]
+then
+    dir=`cat $config`
+    break  
+else
+  clear
+  echo "config file doesnt exist, creating"
+  echo "where is your osu songs folder?"
+  echo -e "${red}this will delete every image and video if you dont put the right directory!!!!!!!!!!${clear}"
+  read dir
+  mkdir $XDG_CONFIG_HOME/obgk 
+    echo "$dir" > "$config"  
+  clear
+fi
+
+if [[ -z $(grep '[^[:space:]]' $config) ]];  then
+  rm -r $config
+  echo -e "${red}error:${clear} config file has no directory, please run obgk again"
+  exit
+fi
+
+echo -e "${blue}obgk${clear} version 3" 
+echo -e "your music folder is in ${purple}$dir${clear}" 
+echo -e "your config file is in ${green}$config${clear}"
+
+
+# start
+  bgk jpg
+  bgk png
+  bgk jpeg
+  bgk bmp
+  bgk mpg
+  bgk flv
+  bgk avi
+  bgk mp4
+  bgk jfif
+
+  # all caps file extensions
+  bgk JPG
+  bgk PNG
+  bgk JPEG
+  bgk BMP
+  bgk MPG
+  bgk FLV
+  bgk AVI
+  bgk MP4
+  bgk JFIF
+  bgk psd
+  bgk wmv
+  bgk FLV
+  
+
+ 
+
+
+
+
+
+
+
+
