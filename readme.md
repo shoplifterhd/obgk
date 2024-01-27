@@ -9,5 +9,7 @@ osu backgrounds are weird, and videos take up alot of space
 
 # how to use???
 go to the folder where obgk is, and do ./obgk.
+<br>
 if you get a permision denied error, do chmod +x obgk
+<br>
 you can also install this to /usr/bin or ./local/bin for convenience
