@@ -6,3 +6,8 @@ osu background and video killer for linux
 
 # why???????
 osu backgrounds are weird, and videos take up alot of space
+
+# how to use???
+go to the folder where obgk is, and do ./obgk.
+if you get a permision denied error, do chmod +x obgk
+you can also install this to /usr/bin or ./local/bin for convenience
