@@ -9,7 +9,7 @@ blue='\033[0;34m'
 purple='\033[0;35m'
 clear='\033[0m'
 
-# thing that deletes stuff
+# thing that deletes stuff idk
 bgk() {
   find $dir -name "*.$1" -type f -exec /bin/rm -vf {} \;
 }
@@ -37,7 +37,7 @@ if [[ -z $(grep '[^[:space:]]' $config) ]];  then
   exit
 fi
 
-echo -e "${blue}obgk${clear} version 3" 
+echo -e "${blue}obgk${clear} version 4" 
 echo -e "your music folder is in ${purple}$dir${clear}" 
 echo -e "your config file is in ${green}$config${clear}"
 
