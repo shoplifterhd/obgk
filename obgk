@@ -27,7 +27,7 @@ else
   echo "where is your osu songs folder?"
   echo -e "${red}this will delete every image and video if you dont put the right directory!!!!!!!!!!${clear}"
 
-# check if zenity is available
+# check if zenity is available, if not fall back to old prompt
   if ! command -v zenity &> /dev/null; then # zenity is not available :(
     read dir
     mkdir $XDG_CONFIG_HOME/obgk 
