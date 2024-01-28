@@ -9,12 +9,13 @@ blue='\033[0;34m'
 purple='\033[0;35m'
 clear='\033[0m'
 
-# thing that deletes stuff idk
+# obgk config file directory
+config=$XDG_CONFIG_HOME/obgk/config
+
+# thing that deletes stuff 
 bgk() {
   find $dir -name "*.$1" -type f -exec /bin/rm -vf {} \;
 }
-
-config=$XDG_CONFIG_HOME/obgk/config
 
 if [ -s $config ]
 then
@@ -25,10 +26,35 @@ else
   echo "config file doesnt exist, creating"
   echo "where is your osu songs folder?"
   echo -e "${red}this will delete every image and video if you dont put the right directory!!!!!!!!!!${clear}"
-  read dir
-  mkdir $XDG_CONFIG_HOME/obgk 
+
+# check if zenity is available
+  if ! command -v zenity &> /dev/null; then # zenity is not available :(
+    read dir
+    mkdir $XDG_CONFIG_HOME/obgk 
     echo "$dir" > "$config"  
-  clear
+    clear
+
+  else # zenity is available!!
+    echo -e "${blue}zenity found!"
+    sleep 1 
+    dir=`zenity --directory  --file-selection --title="please select your osu songs folder"`
+  
+    case $? in
+         0)
+            mkdir $XDG_CONFIG_HOME/obgk 
+            echo "$dir selected"
+            echo "$dir" > "$config"
+            clear;;
+         1)
+            echo "no folder selected :("
+            exit;;
+        -1)
+            clear
+            echo -e "${red}something happened idk${clear}"
+            exit;;
+    esac
+  fi
+  
 fi
 
 if [[ -z $(grep '[^[:space:]]' $config) ]];  then
@@ -37,10 +63,9 @@ if [[ -z $(grep '[^[:space:]]' $config) ]];  then
   exit
 fi
 
-echo -e "${blue}obgk${clear} version 4" 
+echo -e "${blue}obgk${clear} version 5" 
 echo -e "your music folder is in ${purple}$dir${clear}" 
 echo -e "your config file is in ${green}$config${clear}"
-
 
 # start
   bgk jpg
