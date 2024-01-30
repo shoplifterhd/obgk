@@ -63,7 +63,7 @@ if [[ -z $(grep '[^[:space:]]' $config) ]];  then
   exit
 fi
 
-echo -e "${blue}obgk${clear} version 5" 
+echo -e "${blue}obgk${clear} version 2" 
 echo -e "your music folder is in ${purple}$dir${clear}" 
 echo -e "your config file is in ${green}$config${clear}"
 
