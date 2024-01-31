@@ -14,5 +14,6 @@ if you get a permision denied error, do chmod +x obgk
 <br>
 you can also install this to /usr/bin or ./local/bin for convenience
 
-# for arch linux users!!!
-soon
+# for arch based distros!!!
+[you can now use your favourite aur helper to install obgk!!](https://aur.archlinux.org/packages/obgk)
+
