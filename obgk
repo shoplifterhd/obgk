@@ -2,14 +2,14 @@
 # hairlinehd obgk
 # osu! video and background killer
 
-# colors
+# colours
 red='\033[0;31m'
 green='\033[0;32m'
 blue='\033[0;34m'
 purple='\033[0;35m'
 clear='\033[0m'
 
-# obgk config file directory
+# obgk config file 
 config=$XDG_CONFIG_HOME/obgk/config
 
 # thing that deletes stuff 
@@ -28,7 +28,7 @@ else # no config file :(
   echo -e "${red}this will delete every image and video if you dont put the right directory!!!!!!!!!!${clear}"
 
 # check if zenity is available, if not fall back to old prompt
-  if ! command -v zenity &> /dev/null; then # zenity is not available :(
+  if ! command -v zenity &> /dev/null; then # zenity is not available :(((
     echo -e "${purple}zenity was not found"
     read dir
     mkdir $XDG_CONFIG_HOME/obgk 
