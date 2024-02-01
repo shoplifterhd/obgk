@@ -17,11 +17,11 @@ bgk() {
   find $dir -name "*.$1" -type f -exec /bin/rm -vf {} \;
 }
 
-if [ -s $config ]
+if [ -s $config ] # check if config file exists, if so use it as $dir
 then
     dir=`cat $config`
     break  
-else
+else # no config file :(
   clear
   echo "config file doesnt exist, creating"
   echo "where is your osu songs folder?"
@@ -58,7 +58,7 @@ else
   
 fi
 
-if [[ -z $(grep '[^[:space:]]' $config) ]];  then
+if [[ -z $(grep '[^[:space:]]' $config) ]];  then # if the config file exists, but for whatever reason has no contents
   rm -r $config
   echo -e "${red}error:${clear} config file has no directory, please run obgk again"
   exit
