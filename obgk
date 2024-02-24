@@ -1,5 +1,4 @@
 #!/bin/sh
-# hairlinehd obgk
 # osu! video and background killer
 
 # colours
@@ -24,12 +23,11 @@ then
 else # no config file :(
   clear
   echo "config file doesnt exist, creating"
-  echo "where is your osu songs folder?"
   echo -e "${red}this will delete every image and video if you dont put the right directory!!!!!!!!!!${clear}"
 
 # check if zenity is available, if not fall back to old prompt
   if ! command -v zenity &> /dev/null; then # zenity is not available :(((
-    echo -e "${purple}zenity was not found"
+    echo -e "${purple}zenity was not found, please type in your osu song folder"
     read dir
     mkdir $XDG_CONFIG_HOME/obgk 
     echo "$dir" > "$config"  
@@ -64,7 +62,7 @@ if [[ -z $(grep '[^[:space:]]' $config) ]];  then # if the config file exists, b
   exit
 fi
 
-echo -e "${blue}obgk${clear} version 2.5" 
+echo -e "${blue}obgk${clear} version 2.6" 
 echo -e "your music folder is in ${purple}$dir${clear}" 
 echo -e "your config file is in ${green}$config${clear}"
 
