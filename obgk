@@ -35,8 +35,9 @@ else # no config file :(
 
   else # zenity is available!!
     echo -e "${blue}zenity found!"
+    echo -e "${blue}select your osu folder!"
     sleep 1 
-    dir=`zenity --directory  --file-selection --title="please select your osu songs folder"`
+    dir=`zenity --directory  --file-selection --title="select your osu songs folder"`
   
     case $? in
          0) mkdir $XDG_CONFIG_HOME/obgk 
