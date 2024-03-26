@@ -1,5 +1,6 @@
 #!/bin/sh
 # osu! video and background killer
+version='3'
 
 # colours
 red='\033[0;31m'
@@ -22,14 +23,14 @@ then
     break  
 else # no config file :(
   clear
-  echo "config file doesnt exist, creating"
+  echo -e "obgk ${version} setup"
   echo -e "${red}this will delete every image and video if you dont put the right directory!!!!!!!!!!${clear}"
 
 # check if zenity is available, if not fall back to old prompt
   if ! command -v zenity &> /dev/null; then # zenity is not available :(((
     echo -e "${purple}zenity was not found, please type in your osu song folder${clear}"
     read dir
-    mkdir $XDG_CONFIG_HOME/obgk 
+    mkdir $XDG_CONFIG_HOME/obgk >> /dev/null 
     echo "$dir" > "$config"  
     clear
 
@@ -62,7 +63,16 @@ if [[ -z $(grep '[^[:space:]]' $config) ]];  then # if the config file exists, b
   exit
 fi
 
-echo -e "${blue}obgk${clear} version 2.8" 
+if test $(find $dir -name "*.osu" | head -n 3 | wc -l) -eq 0 # a failsafe, where if you dont put the right directory, it wont let you continued
+then
+  echo -e "${red}are you sure you put the right folder?${clear}"
+  echo -e "${red}deleting config file${clear}"
+  sleep 2.5
+  /bin/rm -r $config
+  exit
+fi
+
+echo -e "${blue}obgk${clear} version ${version}" 
 echo -e "your music folder is in ${purple}$dir${clear}" 
 echo -e "your config file is in ${green}$config${clear}"
 
