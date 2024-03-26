@@ -67,7 +67,7 @@ if test $(find $dir -name "*.osu" | head -n 3 | wc -l) -eq 0 # a failsafe, where
 then
   echo -e "${red}are you sure you put the right folder?${clear}"
   echo -e "${red}deleting config file${clear}"
-  sleep 2.5
+  sleep 0.25
   /bin/rm -r $config
   exit
 fi
